@@ -16,10 +16,12 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/food")
 @AllArgsConstructor
+@CrossOrigin("*")
 public class FoodController {
     private final FoodService foodService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public FoodResponse addFood(@RequestPart("food") String food,
                                 @RequestPart("file") MultipartFile file) {
         ObjectMapper objectMapper = new ObjectMapper();
